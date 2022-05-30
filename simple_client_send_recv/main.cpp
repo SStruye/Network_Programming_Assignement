@@ -1,6 +1,7 @@
 #include <iostream>
 #include <zmq.hpp>
 #include <cstring>
+#include <string>
 #include <QString>
 #include <QList>
 #include <thread>
@@ -17,11 +18,10 @@ void receive( zmq::context_t *context, std::string tpc )
     try
     {
         zmq::context_t context(1);
-
         zmq::socket_t subscriber( context, ZMQ_SUB );
         std::string topic = tpc;//"HigherLower>msg!>";
 
-        //subscriber.connect( "tcp://localhost:5556" );
+
 
         subscriber.connect( "tcp://benternet.pxl-ea-ict.be:24042" );
 
@@ -55,9 +55,6 @@ void send( zmq::context_t *context, std::string tpc )
         std::string topic = tpc;//( "HigherLower>msg?>seppe>bob>" );
         std::string message;
 
-        //zmq::socket_t publisher( context, ZMQ_PUB );
-        //publisher.connect( "tcp://localhost:24042" );
-
         zmq::socket_t publisher( context, ZMQ_PUSH );
         publisher.connect( "tcp://benternet.pxl-ea-ict.be:24041" );
 
@@ -83,27 +80,35 @@ void send( zmq::context_t *context, std::string tpc )
 
 int main( int argc, char *argv[] )
 {
-
     std::string topic_snd( "HigherLower>msg?>" );
     std::string topic_recv( "HigherLower>msg!>" );
     std::string topic;
-    std::string temp;
-    std::cout << "name: ";
-    std::cin >> temp;
-    topic = topic + temp +'>';
-    std::cout << "corr: ";
-    std::cin >> temp;
-    topic = topic + temp +'>';
+    bool check = true;
+    while(check){
+        std::string topic;
+        std::string temp;
+        std::cout << "name: ";
+        std::cin >> temp;
+        topic = topic + temp +'>';
+        std::cout << "corr: ";
+        std::cin >> temp;
+        topic = topic + temp +'>';
+        if(topic.find('>')==2){
+            check = false;
+        }
+        else{
+            std::cout << "aint no '>' allowed around here ma boy" << std::endl;
+        }
+    }
+
 
     std::cout << "topic: " << topic << std::endl;
 
     try
     {
         zmq::context_t context(1);
-
         std::thread recvThread( receive, &context, topic_recv + topic );
         std::thread sendThread( send, &context, topic_snd + topic );
-
         recvThread.join();
         sendThread.join();
     }
@@ -114,3 +119,8 @@ int main( int argc, char *argv[] )
 
     return 0;
 }
+
+//subscriber.connect( "tcp://localhost:5556" );         //If server is hosted locally
+
+//zmq::socket_t publisher( context, ZMQ_PUB );
+//publisher.connect( "tcp://localhost:24042" );
