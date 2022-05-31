@@ -84,23 +84,13 @@ int main( int argc, char *argv[] )
     std::string topic_snd( "HigherLower>msg?>" );
     std::string topic_recv( "HigherLower>msg!>" );
     std::string topic;
-    bool check = true;
-    while(check){
-        std::string topic;
-        std::string temp;
-        std::cout << "name: ";
-        std::cin >> temp;
-        topic = topic + temp +'>';
-        std::cout << "corr: ";
-        std::cin >> temp;
-        topic = topic + temp +'>';
-        if(topic.find('>')==2){
-            check = false;
-        }
-        else{
-            std::cout << "aint no '>' allowed around here ma boy" << std::endl;
-        }
-    }
+    std::string temp;
+    std::cout << "name: ";
+    std::cin >> temp;
+    topic = topic + temp +'>';
+    std::cout << "corr: ";
+    std::cin >> temp;
+    topic = topic + temp +'>';
 
 
     std::cout << "topic: " << topic << std::endl;

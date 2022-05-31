@@ -34,7 +34,6 @@ int main( void )
     zmq::message_t * msg = new zmq::message_t();
     std::cout << "Connected to Benternet !" << std::endl;
 
-
     playerHandler PlayerHandler;                        //Create playerHandler object
 
     while( subscriber.connected() )                     //Continious loop when subscriber = connected
