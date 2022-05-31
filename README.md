@@ -13,4 +13,4 @@ One client is written in c++ and prints its output to command prompt. The other 
   + this will add you to a player pool
 - If you want to end a session, you can do this correctly by sending topic + '2>' (i.e. disconnect from server)
   + this will delete you from that player pool
-- Once the game started you can pick 'Higher' by sending '3>' or lower by sending '4>' 
+- Once your opponent connects, the game starts and you can pick 'Higher' by sending '3>' or lower by sending '4>' 
