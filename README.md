@@ -8,9 +8,10 @@ One client is written in c++ and prints its output to command prompt. The other 
 - The game will start once your opponent connects with his client
 ### Steps to use server without the provided clients:
 - The zmq server is subsribed to the topic "HigherLower>msg?>"
-- To get responses from the server your client will have to subscribe to  "HigherLower>msg!>"
-- For the server to recognize you as a player send the topic + '1>'. (i.e. connect to server)
+- So your send topic will consist of the servers topic + + name +'>' + opponent +'>'
+- To get responses from the server your client will have to subscribe to  "HigherLower>msg!>" + name +'>'+ opponent +'>'
+- For the server to recognize you as a player send the send topic + '1>'. (i.e. connect to server)
   + this will add you to a player pool
-- If you want to end a session, you can do this correctly by sending topic + '2>' (i.e. disconnect from server)
+- If you want to end a session, you can do this correctly by sending send topic + '2>' (i.e. disconnect from server)
   + this will delete you from that player pool
-- Once your opponent connects, the game starts and you can pick 'Higher' by sending '3>' or lower by sending '4>' 
+- Once your opponent connects, the game starts and you can pick 'Higher' by sending send topic + '3>' or lower by sending send topic + '4>' 
