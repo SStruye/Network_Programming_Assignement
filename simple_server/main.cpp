@@ -32,7 +32,7 @@ int main( void )
     subscriber.connect( "tcp://benternet.pxl-ea-ict.be:24042" );
     subscriber.setsockopt( ZMQ_SUBSCRIBE, topic_recv.c_str(), topic_recv.length() );
     zmq::message_t * msg = new zmq::message_t();
-    std::cout << "Disconnected from Benternet !" << std::endl;
+    std::cout << "Connected to Benternet !" << std::endl;
 
 
     playerHandler PlayerHandler;                        //Create playerHandler object

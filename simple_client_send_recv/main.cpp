@@ -66,7 +66,8 @@ void send( zmq::context_t *context, std::string tpc )
         while(publisher.connected())
         {
            std::cin >> message;
-           if(message == "connect")system("CLS");
+           if(message == "h")message = '3';
+           if(message == "l")message = '4';
            std::string send = topic + message + '>';
            publisher.send( send.c_str(),send.length());
 
