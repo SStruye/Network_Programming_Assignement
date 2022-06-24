@@ -1,5 +1,6 @@
 #include <iostream>
 #include <zmq.hpp>
+#include <string>
 #include <cstring>
 #include <string>
 #include <QString>
@@ -36,8 +37,11 @@ void receive( zmq::context_t *context, std::string tpc )
             QString str = QString::fromStdString(message);
             QStringList list_recv = str.split(QLatin1Char('>'));
             //std::cout << list_recv[3].toStdString() << " drew: " << list_recv[4].toStdString() << std::endl;
+
             for(int i = 4; i<list_recv.size();i++){
-               std::cout << list_recv[i].toStdString() << std::endl;
+                if(list_recv[i].toStdString() != "smg"){
+                    std::cout << list_recv[i].toStdString() << std::endl;
+                }
             }
         }
     }
@@ -54,23 +58,31 @@ void send( zmq::context_t *context, std::string tpc )
         zmq::context_t context(1);
         std::string topic = tpc;//( "HigherLower>msg?>seppe>bob>" );
         std::string message;
+        std::string bluf;
 
         zmq::socket_t publisher( context, ZMQ_PUSH );
         publisher.connect( "tcp://benternet.pxl-ea-ict.be:24041" );
 
         sleep(1);
-        std::string send = topic + "1>";
+        std::string send = topic + "1>" + "0>";
         system("CLS");
         publisher.send( send.c_str(),send.length() );
 
         while(publisher.connected())
         {
            std::cin >> message;
-           if(message == "h")message = '3';
-           if(message == "l")message = '4';
-           std::string send = topic + message + '>';
-           publisher.send( send.c_str(),send.length());
-
+           std::cout << "bluf? (0 if no): " << std::endl;
+           std::cin >> bluf;
+           if(message == "h" || message == "l" || message == "2" || message == "1"){
+               if(message == "h")message = '3';
+               if(message == "l")message = '4';
+               std::string send = topic + message + '>' + bluf + '>';
+               //std::cout << "MSG: " << send << std::endl;
+               publisher.send( send.c_str(),send.length());
+           }
+           else{
+               std::cout << "non valid input, try again: " << std::endl;
+           }
         }
     }
     catch( zmq::error_t & ex )
@@ -84,6 +96,7 @@ int main( int argc, char *argv[] )
     std::string topic_snd( "HigherLower>msg?>" );
     std::string topic_recv( "HigherLower>msg!>" );
     std::string topic;
+
     std::string temp;
     std::cout << "name: ";
     std::cin >> temp;

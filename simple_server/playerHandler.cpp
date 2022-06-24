@@ -78,6 +78,8 @@ void playerHandler::disconnect(std::string insert){
 //----------------------------------------------------------------------------
 void playerHandler::commandHandler(zmq::message_t *msg){
     int cmd = 0;
+    int bluf = 0;
+    bool bluffed = false;
     std::string message( (char*) msg->data(), msg->size());         // Split incoming msg with delimiter & store in variables
     QString str = QString::fromStdString(message);
     QStringList list_recv = str.split(QLatin1Char('>'));
@@ -85,6 +87,12 @@ void playerHandler::commandHandler(zmq::message_t *msg){
     std::string insert = list_recv[2].toStdString() + '>' + list_recv[3].toStdString();
 
     cmd = stoi(list_recv[4].toStdString());                         // Take value from 5th item from list as command
+
+    bluf = stoi(list_recv[5].toStdString());
+    std::cout << "****BLUF = " << bluf << std::endl;
+    if(bluf > 0){
+        bluffed = true;
+    }
 
     getID(insert);                                                  // Get ID from current game
     int id = currentID;
@@ -96,17 +104,17 @@ void playerHandler::commandHandler(zmq::message_t *msg){
         break;
     case 2: disconnect(insert);                                     // Case 2: Disconnect current player
         break;
-    case 3: {int check = gameVector.at(id).checkGuess(cmd, insert); // Case 3: Player picked higher -> check guess
-                if(check != 2){                                     // If 2 = msg is from wrong player
-                    gameVector.at(id).scoreHandler(check);          // Calc score
-                    gameVector.at(id).getGuess();                   // Get new guess
-                    FillBuffer();                                   // Fill msg buffer with buffer from current game
-                    full = true;                                    // Initiate sendHandler in main
+    case 3: {int check = gameVector.at(id).checkGuess(cmd, insert, bluf);   // Case 3: Player picked higher -> check guess
+                if(check != 2){                                             // If 2 = msg is from wrong player
+                    gameVector.at(id).scoreHandler(check, bluf);                  // Calc score
+                    gameVector.at(id).getGuess();                           // Get new guess
+                    FillBuffer();                                           // Fill msg buffer with buffer from current game
+                    full = true;                                            // Initiate sendHandler in main
                 }
             } break;
-    case 4: {int check = gameVector.at(id).checkGuess(cmd, insert); // Case 4: Player picked lower
+    case 4: {int check = gameVector.at(id).checkGuess(cmd, insert, bluf); // Case 4: Player picked lower
                 if(check != 2){                                     // Same principal as case 3
-                    gameVector.at(id).scoreHandler(check);
+                    gameVector.at(id).scoreHandler(check, bluf);
                     gameVector.at(id).getGuess();
                     FillBuffer();
                     full = true;

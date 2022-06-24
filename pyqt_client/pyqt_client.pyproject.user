@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.1, 2022-05-29T17:31:18. -->
+<!-- Written by QtCreator 7.0.1, 2022-06-24T11:25:39. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -118,35 +118,18 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/main.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/main.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/main.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/2SEM_2021_2022/Network_Programming/Practicum/Network_Programming_Assignement/pyqt_client/main.py</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/2SEM_2021_2022/Network_Programming/Practicum/Network_Programming_Assignement/pyqt_client/main.py</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/2SEM_2021_2022/Network_Programming/Practicum/Network_Programming_Assignement/pyqt_client/main.py</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{20b1267d-451f-4622-bf09-c2b5af791825}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\2SEM_2021_2022\Network_Programming\Practicum\pyqt_client\main.py</value>
+    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\2SEM_2021_2022\Network_Programming\Practicum\Network_Programming_Assignement\pyqt_client\main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/2SEM_2021_2022/Network_Programming/Practicum/Network_Programming_Assignement/pyqt_client</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
-    <value type="bool" key="Analyzer.Perf.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.QmlProfiler.Settings.UseGlobalSettings">true</value>
-    <value type="bool" key="Analyzer.Valgrind.Settings.UseGlobalSettings">true</value>
-    <valuelist type="QVariantList" key="CustomOutputParsers"/>
-    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/save.py</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration.C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/save.py</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client/save.py</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">C:\2SEM_2021_2022\Network_Programming\Practicum\pyqt_client\save.py</value>
-    <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
-    <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/2SEM_2021_2022/Network_Programming/Practicum/pyqt_client</value>
-   </valuemap>
-   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
+   <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
  </data>
  <data>
